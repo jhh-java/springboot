@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>detail</title>
+</head>
+<body>
+	<div class="container" style="width: 25%;">
+		<table id="table">
+			<tr>
+				<th>id<br><input id="id" readonly="readonly"></th>
+				<th>제목<br><input id="title"></th>
+			</tr>
+			<tr>
+				<th colspan="2">내용<br><textarea id="detail" style="width: 100%;" rows="10;"></textarea></th>
+			</tr>
+			<tr>
+				<th>게시자<br><input id="modifyName" readonly="readonly"></th>
+				<th>게시일<br><input id="modifyDate" readonly="readonly"></th>
+			</tr>
+		</table>
+		<button>뒤로가기</button>
+		<button style="float: right;">수정</button>
+		<button style="float: right;">삭제</button>
+	</div>
+</body>
+<script src="/js/board/detail.js"></script>
+</html>

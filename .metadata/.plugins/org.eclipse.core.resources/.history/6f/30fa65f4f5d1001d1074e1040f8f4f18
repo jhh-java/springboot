@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<style type="text/css">
+h1 {
+	text-align: center;
+	margin-top: 10%;
+}
+input {
+	margin: 0 auto;
+}
+</style>
+<title>Index</title>
+</head>
+<body>
+	<div class="container">
+		<div id="head">
+			<h1>Login</h1>
+		</div>
+		<div id="body">
+			<input>
+			<br>
+			<input>
+		</div>
+	</div>
+</body>
+<script src="/js/board/index.js"></script>
+</html>

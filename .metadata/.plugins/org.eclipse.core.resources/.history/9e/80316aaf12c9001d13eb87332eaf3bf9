@@ -1,0 +1,10 @@
+server:
+	prot: 8080
+	servlet:
+		context-path: /coronabook
+		
+spring:
+	mvc:
+		view:
+			prefix: /WEB-INF/views/
+			suffix: .jsp

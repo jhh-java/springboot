@@ -1,0 +1,15 @@
+package com.spring.boot.dto;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class MemberDTO {
+	private String id;
+	private String password;
+	private String name;
+	private String birth;
+	private String phone;
+	private String zip;
+	private String addr1;
+	private String addr2;
+}

@@ -1,0 +1,100 @@
+var _listData;
+var searchParams = new URLSearchParams(location.search);
+let param;
+var main = {
+	init : function(){
+		console.log('index js start');
+		main.event();
+		for (param of searchParams) {
+		  	console.log(param);
+		}
+		main.callData();
+	},
+	
+	event : function(){
+		$('#btnBack').on('click', function(){
+			history.back();
+		});
+		$('#btnModify').on('click', function(){
+			main.modify();
+		});
+		$('#btnDelete').on('click', function(){
+			main.delete();
+		});
+	},
+	
+	callData(){
+		$.ajax({
+            url:'/detail', //request 보낼 서버의 경로
+            method:'post', // 메소드(get, post, put 등)
+            type:'json',
+            contentType: 'application/json',
+            data: JSON.stringify({'id': param[1]}), //보낼 데이터
+            success: function(data) {
+                //서버로부터 정상적으로 응답이 왔을 때 실행
+                console.log(data);
+                main.drawTable(data);
+            },
+            error: function(err) {
+                //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+                console.log(err);
+            }
+        });
+	},
+	
+	
+	drawTable(data){
+		_listData = data;
+		$('#id').val(data[0].id);
+		$('#title').val(data[0].title);
+		$('#detail').val(data[0].detail);
+		$('#modifyName').val(data[0].modifyName);
+		$('#modifyDate').val(data[0].modifyDate);
+	},
+	
+	modify(){
+		var obj = {
+			id			:		param[1],
+			title		:		$('#title').val(),
+			detail		:		$('#detail').val(),
+			modifyName	:		$('#modifyName').val(),
+		};
+		
+		$.ajax({
+            url:'/modify', //request 보낼 서버의 경로
+            method:'post', // 메소드(get, post, put 등)
+            type:'json',
+            contentType: 'application/json',
+            data: JSON.stringify(obj), //보낼 데이터
+            success: function(data) {
+                //서버로부터 정상적으로 응답이 왔을 때 실행
+                console.log(data);
+            },
+            error: function(err) {
+                //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+                console.log(err);
+            }
+        });
+	},
+	
+	delete(){
+		$.ajax({
+            url:'/delete', //request 보낼 서버의 경로
+            method:'post', // 메소드(get, post, put 등)
+            type:'json',
+            contentType: 'application/json',
+            data: JSON.stringify({'id': param[1]}), //보낼 데이터
+            success: function(data) {
+                //서버로부터 정상적으로 응답이 왔을 때 실행
+                console.log(data);
+                history.back();
+            },
+            error: function(err) {
+                //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+                console.log(err);
+            }
+        });
+	}
+}
+
+main.init();

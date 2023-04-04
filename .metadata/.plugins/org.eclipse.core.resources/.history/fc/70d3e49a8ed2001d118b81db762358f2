@@ -1,0 +1,112 @@
+var _listData;
+var obj;
+var main = {
+	init : function(){
+		console.log('index js start');
+		main.event();
+		if(localStorage.getItem('item') != null){
+			obj = JSON.parse(localStorage.getItem('item'));
+			$('#userId').val(obj.userId);
+			$('#userName').val(obj.userName);
+			$('#userBirth').val(obj.userBirth);
+			$('#userPhone').val(obj.userPhone);
+			$('#userZip').val(obj.userZip);
+			$('#userAddr1').val(obj.userAddr1);
+			$('#userAddr2').val(obj.userAddr2);
+			localStorage.removeItem('item');
+		}
+	},
+	
+	event : function(){
+		$('#btnBack').on('click', function(){
+			obj ={
+				userId			:	$('#userId').val(),
+				userName		:	$('#userName').val(),
+				userBirth		:	$('#userBirth').val(),
+				userPhone		:	$('#userPhone').val(),
+				userZip			:	$('#userZip').val(),
+				userAddr1		:	$('#userAddr1').val(),
+				userAddr2		:	$('#userAddr2').val(),
+			};
+			localStorage.setItem('item', JSON.stringify(obj));
+			location.href='/';
+		});
+		
+		$('#userName').on('keyup', function(){//이름
+			var reg = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g;
+			if(reg.test($(this).val())){
+				console.log('test');
+			}else{
+				$(this).val('');
+			}
+		});
+		
+		$('#userPhone', '#userBirth').on('keyup', function(){//전화
+			var reg = /^[0-9]+$/g;
+			if(reg.test($(this).val())){
+				console.log('test');
+			}else{
+				$(this).val('');
+			}
+		});
+		
+		$('#searchAddr').on('click', function(){
+			new daum.Postcode({
+		        oncomplete: function(data) {
+					console.log(data);
+					$('#userZip').val(data.zonecode);
+					if(data.userSelectedType == 'J'){//지번
+						$('#userAddr1').val(data.jibunAddress);
+						$('#userAddr2').focus();
+					}else{//도로명
+						$('#userAddr1').val(data.roadAddress);
+						$('#userAddr2').focus();
+					}
+		        }
+		    }).open();
+		});
+		
+		$('#btnRegist').on('click', function(){
+			if(main.validation()){
+				
+			}
+		});
+	},
+	
+	callData(){
+		$.ajax({
+            url:'/cnt', //request 보낼 서버의 경로
+            method:'post', // 메소드(get, post, put 등)
+            type:'json',
+            contentType: 'application/json',
+            data: JSON.stringify({'index': 'index'}), //보낼 데이터
+            success: function(data) {
+                //서버로부터 정상적으로 응답이 왔을 때 실행
+                console.log(data);
+                $('#cnt').text($('#cnt').text()+data);
+                main.callData2();
+            },
+            error: function(err) {
+                //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+                console.log(err);
+            }
+        });
+	},
+	
+	validation : function(){
+		$('#userId').val()  
+		$('#userName').val(),
+		$('#userBirth').val()
+		$('#userPhone').val()
+		$('#userZip').val(), 
+		$('#userAddr1').val()
+		$('#userAddr2').val()
+		if($('#userId').val() != ''){
+			alert('아이디를 입력하세요.');
+		}else if($('#userName').val() != ''){
+			alert('이름을 입력하세요.');
+		}
+	},
+}
+
+main.init();

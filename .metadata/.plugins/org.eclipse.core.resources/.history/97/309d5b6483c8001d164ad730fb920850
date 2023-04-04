@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>타이틀</title>
+</head>
+<body>
+	<p style="color: red; background-color: black;">Spring Boot!</p>
+</body>
+</html>

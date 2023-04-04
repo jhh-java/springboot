@@ -1,0 +1,54 @@
+package com.spring.boot.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.spring.boot.dto.BoardDTO;
+import com.spring.boot.mapper.BoardMapper;
+
+@Service
+public class BoardServiceImpl implements BoardService{
+	
+	@Autowired
+	private BoardMapper boardMapper;
+
+	@Override
+	public int cnt() throws Exception {
+		return boardMapper.cnt();
+	}
+
+	@Override
+	public List<BoardDTO> getList() throws Exception {
+		return boardMapper.getList();
+	}
+
+	@Override
+	public void save(BoardDTO dto) throws Exception {
+		boardMapper.save(dto);
+	}
+
+	@Override
+	public boolean update(int id) throws Exception {
+		int res = boardMapper.update(id);
+		if(res == 1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public void delete(int id) throws Exception {
+		boardMapper.delete(id);
+	}
+
+	@Override
+	public List<BoardDTO> detail(int id) throws Exception {
+		return boardMapper.detail(id);
+	}
+
+	
+	
+}

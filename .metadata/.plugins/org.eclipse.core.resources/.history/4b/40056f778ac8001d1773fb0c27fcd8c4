@@ -1,0 +1,16 @@
+package com.example.board.entity;
+
+import java.time.LocalDateTime;
+
+import lombok.Getter;
+
+@Getter
+@MappedSuperclass
+@entityListeners(auditingEntityListener.class)
+public class BaseTimeEntity {
+	@CreateDate
+	private LocalDateTime registerTime;
+	
+	@LastModifiedDate
+	private LocalDateTime updateTime;
+}

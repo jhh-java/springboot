@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/index.js"></script>
+<meta charset="UTF-8">
+<title>테스트</title>
+</head>
+<body>
+	<p>테스트 페이지</p>
+	<button id="btn">버튼</button>
+</body>
+</html>
+
+<script type="text/javascript">
+$('#btn').on('click', function(){
+    console.log('aa');
+});
+</script>

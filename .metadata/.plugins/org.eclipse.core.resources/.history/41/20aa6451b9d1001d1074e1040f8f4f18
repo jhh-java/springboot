@@ -1,0 +1,11 @@
+package com.spring.boot.dto;
+
+public class BoardDTO {
+	private int id;
+	private String title;
+	private String detail;
+	private String writeDate;
+	private String modifyDate;
+	private String writerName;
+	private String modifyName;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>detail</title>
+</head>
+<body>
+	<div class="container">
+		<table id="table">
+			<tr>
+				<th>id<br><input></th>
+				<th>제목<br><input></th>
+			</tr>
+			<tr>
+				<th colspan="2">내용<br><textarea style="width: 100%;" rows="10;"></textarea></th>
+			</tr>
+			<tr>
+				<th>게시자<br><input></th>
+				<th>게시일<br><input></th>
+			</tr>
+		</table>
+	</div>
+</body>
+<script src="/js/board/detail.js"></script>
+</html>

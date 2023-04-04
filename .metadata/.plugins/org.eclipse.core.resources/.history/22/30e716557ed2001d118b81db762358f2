@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<style type="text/css">
+h1 {
+	text-align: center;
+	margin-top: 15%;
+}
+#inputArea {
+	text-align: center;
+	padding: 1% 0;
+}
+input {
+	
+}
+#btnArea {
+	text-align: center;
+}
+</style>
+<title>Index</title>
+</head>
+<body>
+	<div class="container">
+		<div id="head">
+			<h1>Login</h1>
+		</div>
+		<div id="inputArea">
+			<input placeholder="ID">
+			<br>
+			<input placeholder="PASSWORD">
+		</div>
+		<div id="btnArea">
+			<button id="regist"><a href="/join" style="text-decoration-line: none;">가입</a></button>
+			<button id="login">로그인</button>
+		</div>
+	</div>
+</body>
+<script src="/js/board/index.js"></script>
+</html>

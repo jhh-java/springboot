@@ -1,0 +1,20 @@
+package com.example.boardResponse.dto;
+
+import java.time.LocalDateTime;
+
+import lombok.Getter;
+
+@Getter
+public class BoardResponseDto {
+	private Long id;
+	private String title;
+	private String content;
+	private int readCnt;
+	private String registerId;
+	private LocalDateTime registerTime;
+	
+	public BoardResponseDto(Board entity) {
+		this.id = entity.getId();
+		
+	}
+}

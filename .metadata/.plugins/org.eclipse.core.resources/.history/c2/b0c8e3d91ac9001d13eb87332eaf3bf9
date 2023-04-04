@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="/index.js"></script>
+<meta charset="UTF-8">
+<title>테스트</title>
+</head>
+<body>
+	<p>테스트 페이지</p>
+	<button id="btn">버튼</button>
+</body>
+</html>

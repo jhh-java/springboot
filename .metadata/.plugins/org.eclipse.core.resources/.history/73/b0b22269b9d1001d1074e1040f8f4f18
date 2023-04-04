@@ -1,0 +1,14 @@
+package com.spring.boot.service;
+
+import java.util.List;
+
+import com.spring.boot.mapper.BoardDTO;
+
+public interface BoardService {
+	
+	public int cnt() throws Exception;
+	public List<BoardDTO> getList() throws Exception;
+	public void save(BoardDTO dto) throws Exception;
+	public void update(int id) throws Exception;
+	public void delete(int id) throws Exception;
+}

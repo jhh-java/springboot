@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style type="text/css">
+	table {
+	}
+</style>
+<meta charset="UTF-8">
+<title>List</title>
+</head>
+<body>
+	<div class="container">
+		<h3 id="cnt">게시글 수 : </h3>
+		<table id="table" border="1px solid black;">
+		</table>
+		<button id="btnCreate"><a href="/create" style="text-decoration-line: none;">등록</a></button>
+	</div>
+</body>
+<script src="/js/board/index.js"></script>
+</html>

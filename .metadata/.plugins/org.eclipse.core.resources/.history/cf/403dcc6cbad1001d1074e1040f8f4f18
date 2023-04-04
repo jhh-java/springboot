@@ -1,0 +1,29 @@
+package com.spring.boot;
+
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class SpringBootBoardApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootBoardApplication.class, args);
+	}
+
+	@Bean
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
+		SqlSessionFactory sessionFactory = new SqlSessionFactoryBean();
+		sessionFactory.setDataSource(dataSource);
+		
+		Resource[] res = new PathMathcingResourcePatternResolver().getResource("classpath:mybatis/mapper/*.xml");
+		
+		sessionFactory.setMapperLocation(res);
+		
+		return sessionFactory.getObject();
+	}
+}

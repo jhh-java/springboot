@@ -1,0 +1,8 @@
+package com.spring.boot.service;
+
+public interface MemberService {
+
+	public int join() throws Exception;
+	public int login() throws Exception;
+	public int logout() throws Exception;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<style type="text/css">
+h1 {
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+<title>Index</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Login</h1>
+	</div>
+</body>
+<script src="/js/board/index.js"></script>
+</html>

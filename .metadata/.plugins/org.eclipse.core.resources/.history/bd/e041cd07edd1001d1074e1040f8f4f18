@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>create</title>
+</head>
+<body>
+	<div class="container" style="width: 22%;">
+		<table id="table">
+			<tr>
+				<th colspan="2">제목<br><input id="title" style="width: 100%;"></th>
+			</tr>
+			<tr>
+				<th colspan="2">내용<br><textarea id="detail" style="width: 100%;" rows="10;"></textarea></th>
+			</tr>
+			<tr>
+				<th>게시자<br><input id="modifyName" readonly="readonly"></th>
+				<th>게시일<br><input id="modifyDate" readonly="readonly"></th>
+			</tr>
+		</table>
+		<button id="btnBack">뒤로가기</button>
+		<button style="float: right;" id="btnModify">수정</button>
+		<button style="float: right;" id="btmDelete">삭제</button>
+	</div>
+</body>
+<script src="/js/board/create.js"></script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style type="text/css">
+.formArea {
+	text-align: center;
+	margin: 10% 20% 10% 20%;
+/* 	max-width: 200px; */
+}
+.formArea>span {
+/* 	float: left; */
+}
+</style>
+<meta charset="UTF-8">
+<title>Join</title>
+</head>
+<body>
+	<div class="container">
+		<div class="formArea">
+			<span>아이디</span>
+			<input placeholder="id123"><br>
+			<span>비밀번호</span>
+			<input placeholder="1234qwer"><br>
+			<span>이름</span>
+			<input placeholder="홍길동"><br>
+			<span>생년월일</span>
+			<input placeholder="011231"><br>
+			<span>전화번호</span>
+			<input placeholder="01012345678"><br>
+			<span>주소</span>
+			<input placeholder="우편번호"><br><input placeholder="상세주소"><br>
+		</div>
+		<div class="btnArea">
+			<button><a>뒤로가기</a></button>
+			<button><a>가입</a></button>
+		</div>
+	</div>
+</body>
+</html>
