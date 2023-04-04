@@ -1,6 +1,7 @@
 var _listData;
 var searchParams = new URLSearchParams(location.search);
 let param;
+var user;
 var main = {
 	init : function(){
 		console.log('index js start');
@@ -8,12 +9,14 @@ var main = {
 		for (param of searchParams) {
 		  	console.log(param);
 		}
+		if(localStorage.getItem('user') != null){
+			user = localStorage.getItem('user');
+		}
 		main.callData();
 	},
 	
 	event : function(){
 		$('#btnBack').on('click', function(){
-//			history.back();
 			location.href='/list';
 		});
 		$('#btnModify').on('click', function(){
@@ -58,7 +61,7 @@ var main = {
 			id			:		param[1],
 			title		:		$('#title').val(),
 			detail		:		$('#detail').val(),
-			modifyName	:		$('#modifyName').val(),
+			modifyName	:		user
 		};
 		if(confirm('수정 하시겠습니까?')){
 			$.ajax({
