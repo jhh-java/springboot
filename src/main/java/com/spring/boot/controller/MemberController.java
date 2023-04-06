@@ -32,9 +32,24 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping("/shop/regist")
+	public int shopRegist(@RequestBody MemberDTO memberDto) throws Exception{
+		int res = memberService.shopRegist(memberDto);
+		if(res == 1) {
+			return 200;
+		}else {
+			return 400;
+		}
+	}
+	
 	@RequestMapping("/login")
 	public String login(@RequestBody MemberDTO member) throws Exception{
-		int res = memberService.login(member);
+		int res;
+		if(member.getShop().equals("Y")) {
+			res = memberService.shopLogin(member);
+		}else {
+			res = memberService.login(member);
+		}
 		String msg;
 		if(res == 1) {
 			msg = "SUCCESS";

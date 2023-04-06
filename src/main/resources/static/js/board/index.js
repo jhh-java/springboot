@@ -1,4 +1,5 @@
 var _listData;
+var clickCnt = 0;
 var main = {
 	init : function(){
 		console.log('index js start');
@@ -49,7 +50,14 @@ var main = {
 			if(e.keyCode == 13){
 				$('#login').trigger('click');
 			}
-		})
+		});
+		
+		$('html').on('click', function (){
+		    clickCnt = clickCnt + 1;
+		    if(clickCnt === 5){
+				$('#shop').prop('hidden', false);
+			}
+		});
 	},
 	
 	callData(){

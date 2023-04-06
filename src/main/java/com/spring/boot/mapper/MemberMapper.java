@@ -10,4 +10,6 @@ public interface MemberMapper {
 	public int login(MemberDTO memberDto) throws Exception;
 	public int logout() throws Exception;
 	public void delete() throws Exception;
+	public int shopRegist(MemberDTO dto) throws Exception;
+	public int shopLogin(MemberDTO memberDto) throws Exception;
 }

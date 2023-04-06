@@ -22,8 +22,18 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	public int shopRegist(MemberDTO memberDto) throws Exception {
+		return memberMapper.shopRegist(memberDto);
+	}
+
+	@Override
 	public int login(MemberDTO memberDto) throws Exception {
 		return memberMapper.login(memberDto);
+	}
+
+	@Override
+	public int shopLogin(MemberDTO memberDto) throws Exception {
+		return memberMapper.shopLogin(memberDto);
 	}
 
 	@Override

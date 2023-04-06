@@ -12,7 +12,21 @@ public class MemberDTO {
 	private String zip;
 	private String addr1;
 	private String addr2;
+	private String email;
+	private String shop;
 	
+	public String getShop() {
+		return shop;
+	}
+	public void setShop(String shop) {
+		this.shop = shop;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getId() {
 		return id;
 	}

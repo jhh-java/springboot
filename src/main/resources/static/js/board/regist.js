@@ -19,16 +19,16 @@ var main = {
 	
 	event : function(){
 		$('#btnBack').on('click', function(){
-			obj ={
-				userId			:	$('#userId').val(),
-				userName		:	$('#userName').val(),
-				userBirth		:	$('#userBirth').val(),
-				userPhone		:	$('#userPhone').val(),
-				userZip			:	$('#userZip').val(),
-				userAddr1		:	$('#userAddr1').val(),
-				userAddr2		:	$('#userAddr2').val(),
-			};
-			localStorage.setItem('item', JSON.stringify(obj));
+//			obj ={
+//				userId			:	$('#userId').val(),
+//				userName		:	$('#userName').val(),
+//				userBirth		:	$('#userBirth').val(),
+//				userPhone		:	$('#userPhone').val(),
+//				userZip			:	$('#userZip').val(),
+//				userAddr1		:	$('#userAddr1').val(),
+//				userAddr2		:	$('#userAddr2').val(),
+//			};
+//			localStorage.setItem('item', JSON.stringify(obj));
 			location.href='/';
 		});
 		
