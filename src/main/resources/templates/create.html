@@ -5,6 +5,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+        <style type="text/css">
+        	.btnArea{
+        		display: inline-block;
+        	}
+        </style>
 <meta charset="UTF-8">
 <title>create</title>
 </head>
@@ -18,8 +23,13 @@
 				<th colspan="2">내용<br><textarea id="detail" style="width: 100%;" rows="30;"></textarea></th>
 			</tr>
 		</table>
-		<button id="btnBack">뒤로가기</button>
-		<button style="float: right;" id="btnInsert">등록</button>
+		<div class="btnArea">
+			<button type="button" id="btnBack">뒤로가기</button>
+		</div>
+		<div class="btnArea" style="float: right;">
+			<input type="file" multiple id="btnImg" name="btnImg" />
+			<button type="button" id="btnInsert">등록</button>
+		</div>
 	</div>
 </body>
 <script src="/js/board/create.js"></script>

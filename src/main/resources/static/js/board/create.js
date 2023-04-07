@@ -35,7 +35,8 @@ var main = {
 			title		:	$('#title').val(),
 			detail		:	$('#detail').val(),
 			writerName	:	user,
-			modifyName	:	user
+			modifyName	:	user,
+			filePath	:	$('#btnImg').val()
 		}
 		$.ajax({
             url:'/insert', //request 보낼 서버의 경로

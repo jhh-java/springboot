@@ -45,7 +45,7 @@ public class MemberController {
 	@RequestMapping("/login")
 	public String login(@RequestBody MemberDTO member) throws Exception{
 		int res;
-		if(member.getShop().equals("Y")) {
+		if(member.getShop() != null) {
 			res = memberService.shopLogin(member);
 		}else {
 			res = memberService.login(member);

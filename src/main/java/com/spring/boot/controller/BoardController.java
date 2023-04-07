@@ -5,18 +5,23 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.boot.dto.BoardDTO;
+import com.spring.boot.dto.ImageDTO;
 import com.spring.boot.service.BoardService;
 import com.spring.boot.util.MyUtil;
 
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
+@Slf4j
+@CrossOrigin
 public class BoardController {
 	private Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
@@ -51,10 +56,14 @@ public class BoardController {
 	
 	@RequestMapping("/cnt")
 	public int index() throws Exception{
-		int res = boardService.cnt();
-		
+		int res = 0;
+		try {
+			res = boardService.cnt();
+            log.info("BoardController.index");
+		} catch (Exception e) {
+            log.error("에러",e);
+		}
 		ModelAndView mav = new ModelAndView();
-		
 		mav.addObject("cnt", res);
 //		mav.addObject("list", list);
 //		mav.setViewName("index");

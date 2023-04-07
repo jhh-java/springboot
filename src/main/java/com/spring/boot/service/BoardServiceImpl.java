@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,10 @@ import com.spring.boot.controller.BoardController;
 import com.spring.boot.dto.BoardDTO;
 import com.spring.boot.mapper.BoardMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class BoardServiceImpl implements BoardService{
 	private Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
