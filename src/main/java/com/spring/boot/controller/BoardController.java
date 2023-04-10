@@ -1,18 +1,21 @@
 package com.spring.boot.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.boot.dto.BoardDTO;
-import com.spring.boot.dto.ImageDTO;
 import com.spring.boot.service.BoardService;
 import com.spring.boot.util.MyUtil;
 
@@ -88,6 +91,17 @@ public class BoardController {
 	public boolean insert(@RequestBody BoardDTO board) throws Exception {
 		boolean res = boardService.save(board);
 		return res;
+	}
+	
+	@PostMapping("/imageSave")
+	private void imageSave(MultipartFile file) throws Exception{
+		String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+		UUID uuid = UUID.randomUUID();
+		String fileName = uuid + "_" + file.getOriginalFilename();
+		File saveFile = new File(projectPath, fileName);
+		log.info("projectPath : " + projectPath);
+		log.info("fileName : " + fileName);
+		file.transferTo(saveFile);
 	}
 	
 	@RequestMapping("/goDetail")

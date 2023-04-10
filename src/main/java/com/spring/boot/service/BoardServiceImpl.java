@@ -1,12 +1,14 @@
 package com.spring.boot.service;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.Marker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.boot.controller.BoardController;
 import com.spring.boot.dto.BoardDTO;
@@ -34,6 +36,12 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public boolean save(BoardDTO dto) throws Exception {
+//		String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+//		UUID uuid = UUID.randomUUID();
+//		String fileName = uuid + "_" + file.getOriginalFilename();
+//		File saveFile = new File(projectPath, fileName);
+//		file.transferTo(saveFile);
+		
 		boolean res = boardMapper.save(dto);
 		if(res) {
 			logger.info("insert success");

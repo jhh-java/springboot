@@ -11,13 +11,20 @@ public class BoardDTO {
 	private String modifyDate;
 	private String writerName;
 	private String modifyName;
-	private String filePath;
+	private String filename;
+	private String filepath;
 	
-	public String getFilePath() {
-		return filePath;
+	public String getFilename() {
+		return filename;
 	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public String getFilepath() {
+		return filepath;
+	}
+	public void setFilepath(String filePath) {
+		this.filepath = filePath;
 	}
 	public int getId() {
 		return id;
