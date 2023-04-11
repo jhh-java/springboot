@@ -46,8 +46,12 @@ var main = {
             success: function(data) {
                 //서버로부터 정상적으로 응답이 왔을 때 실행
                 console.log(data);
-                main.fileSave();
-//                location.href='/list';
+                var fileData = $('input[name="file"]');
+                if(fileData[0].files.length < 1){
+	                location.href='/list';
+				}else{
+	                main.fileSave();
+				}
             },
             error: function(err) {
                 //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행

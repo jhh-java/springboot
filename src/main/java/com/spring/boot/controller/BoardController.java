@@ -1,6 +1,7 @@
 package com.spring.boot.controller;
 
 import java.io.File;
+import java.net.URLDecoder;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -105,6 +105,7 @@ public class BoardController {
 		String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
 		UUID uuid = UUID.randomUUID();
 		String fileName = uuid + "_" + file.getOriginalFilename();
+		String originFileName = file.getOriginalFilename();
 		File saveFile = new File(projectPath, fileName);
 		log.info("projectPath : " + projectPath);
 		log.info("fileName : " + fileName);
@@ -115,6 +116,7 @@ public class BoardController {
 			boardDto.setId(currentId);
 			boardDto.setFilename(fileName);
 			boardDto.setFilepath(projectPath);
+			boardDto.setOriginFileName(originFileName);
 			boardService.updateFile(boardDto);
 		}
 	}
@@ -136,6 +138,7 @@ public class BoardController {
 		return list;
 	}
 	
+	
 	@RequestMapping("/modify")
 	public List<BoardDTO> modify(@RequestBody BoardDTO board) throws Exception{
 		boolean res = boardService.update(board);
@@ -147,5 +150,12 @@ public class BoardController {
 	@RequestMapping("/delete")
 	public void delete(@RequestBody BoardDTO board) throws Exception {
 		boardService.delete(board.getId());
+	}
+
+	@PostMapping("/deleteFile")
+	public void deleteFile(@RequestBody BoardDTO board) throws Exception {
+		String fileName = board.getFilename();
+		File file = new File("C:\\workspace\\SpringBootBoard\\src\\main\\resources\\static\\files\\"+fileName);
+		file.delete();
 	}
 }

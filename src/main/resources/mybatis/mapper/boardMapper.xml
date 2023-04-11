@@ -58,7 +58,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE BOARD
 		SET
 		FILENAME = #{filename},
-		FILEPATH = #{filepath}
+		FILEPATH = #{filepath},
+		ORIGINFILENAME = #{originFileName}
 		WHERE ID = #{id}
 	</update>
 	

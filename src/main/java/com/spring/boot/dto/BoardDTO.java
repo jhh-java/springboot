@@ -13,7 +13,14 @@ public class BoardDTO {
 	private String modifyName;
 	private String filename;
 	private String filepath;
+	private String originFileName;
 	
+	public String getOriginFileName() {
+		return originFileName;
+	}
+	public void setOriginFileName(String originFileName) {
+		this.originFileName = originFileName;
+	}
 	public String getFilename() {
 		return filename;
 	}
