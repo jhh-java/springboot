@@ -35,14 +35,14 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public boolean save(BoardDTO dto) throws Exception {
+	public boolean save(BoardDTO board) throws Exception {
 //		String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
 //		UUID uuid = UUID.randomUUID();
 //		String fileName = uuid + "_" + file.getOriginalFilename();
 //		File saveFile = new File(projectPath, fileName);
 //		file.transferTo(saveFile);
 		
-		boolean res = boardMapper.save(dto);
+		boolean res = boardMapper.save(board);
 		if(res) {
 			logger.info("insert success");
 			return true;
@@ -52,14 +52,24 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public boolean update(BoardDTO dto) throws Exception {
-		int res = boardMapper.update(dto);
+	public boolean update(BoardDTO board) throws Exception {
+		int res = boardMapper.update(board);
 		if(res == 1) {
 			logger.info("update success");
 			return true;
 		}else {
 			return false;
 		}
+	}
+	
+	@Override
+	public void updateFile(BoardDTO board) throws Exception {
+		boardMapper.updateFile(board);
+	}
+	
+	@Override
+	public int currunt() throws Exception {
+		return boardMapper.currunt();
 	}
 
 	@Override

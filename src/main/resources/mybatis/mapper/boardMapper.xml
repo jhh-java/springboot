@@ -47,45 +47,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE ID = #{id}
 	</delete>
 	
+	<select id="currunt" resultType="int">
+		SELECT id FROM 
+			(SELECT * FROM BOARD ORDER BY id DESC)
+		WHERE 1=1
+		AND rownum = 1
+	</select>
+	
+	<update id="updateFile">
+		UPDATE BOARD
+		SET
+		FILENAME = #{filename},
+		FILEPATH = #{filepath}
+		WHERE ID = #{id}
+	</update>
+	
 	<insert id="insertData" parameterType="com.spring.boot.dto.BoardDTO">
 		insert into board (num,name,pwd,email,subject,content,ipAddr,
 		hitCount,created) values (#{num},#{name},#{pwd},#{email},#{subject},
 		#{content},#{ipAddr},0,sysdate)
 	</insert>
 	 
-	<select id="getDataCount" parameterType="hashMap" resultType="int">
-		select nvl(count(*),0) from board
-		where ${searchKey} like '%' || #{searchValue} || '%'
-	</select>
-	 
-	<select id="getLists" parameterType="map" resultType="com.spring.boot.dto.BoardDTO">
-		select * from (
-		select rownum rnum, data.* from (
-		select num,name,subject,hitCount,
-		to_char(created,'YYYY-MM-DD') created
-		from board where ${searchKey} like '%' || #{searchValue} || '%'
-		order by num desc) data)
-	<![CDATA[
-		where rnum>=#{start} and rnum<=#{end}
-	]]>
-	</select>
-	 
-	<update id="updateHitCount" parameterType="int">
-		update board set hitCount=hitCount+1 where num=#{num}
-	</update>
-	 
-	<select id="getReadData" parameterType="int" resultType="com.spring.boot.dto.BoardDTO">
-		select num,name,pwd,email,subject,content,IpAddr,
-		hitCount,created from board where num=#{num}
-	</select>
-	 
-	<update id="updateData" parameterType="com.spring.boot.dto.BoardDTO">
-		update board set name=#{name},pwd=#{pwd},email=#{email},
-		subject=#{subject},content=#{content} where num=#{num}
-	</update>
-	 
-	<delete id="deleteData" parameterType="int">
-		delete board where num=#{num}
-	</delete>
 
 </mapper>

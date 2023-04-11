@@ -15,5 +15,6 @@ public interface BoardMapper {
 	public int update(BoardDTO dto) throws Exception;
 	public void delete(int id) throws Exception;
 	public List<BoardDTO> detail(int id);
-	
+	public void updateFile(BoardDTO board) throws Exception;
+	public int currunt() throws Exception;
 }

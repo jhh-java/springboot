@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -90,6 +91,12 @@ public class BoardController {
 	@RequestMapping("/insert")
 	public boolean insert(@RequestBody BoardDTO board) throws Exception {
 		boolean res = boardService.save(board);
+//		if(res != false) {
+//			int currentId = boardService.currunt();
+//			log.info(String.valueOf(currentId));
+//			boardDto.setId(currentId);
+//			boardDto.setId(board.getId());
+//		}
 		return res;
 	}
 	
@@ -101,7 +108,15 @@ public class BoardController {
 		File saveFile = new File(projectPath, fileName);
 		log.info("projectPath : " + projectPath);
 		log.info("fileName : " + fileName);
-		file.transferTo(saveFile);
+		if(!file.isEmpty()) {
+			file.transferTo(saveFile);
+			int currentId = boardService.currunt();
+			log.info(String.valueOf(currentId));
+			boardDto.setId(currentId);
+			boardDto.setFilename(fileName);
+			boardDto.setFilepath(projectPath);
+			boardService.updateFile(boardDto);
+		}
 	}
 	
 	@RequestMapping("/goDetail")
