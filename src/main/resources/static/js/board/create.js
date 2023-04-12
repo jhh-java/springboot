@@ -13,6 +13,7 @@ var main = {
 		if(localStorage.getItem('user') != null){
 			user = localStorage.getItem('user');
 		}
+		$('#title').focus();
 	},
 	
 	event : function(){

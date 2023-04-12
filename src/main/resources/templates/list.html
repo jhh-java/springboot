@@ -5,6 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="../css/common.css"/>
 <meta charset="UTF-8">
 <title>List</title>
 </head>
@@ -13,6 +14,16 @@
 		<h3 id="cnt">게시글 수 : </h3>
 		<table id="table" border="1px solid black;">
 		</table>
+		<!-- <table>
+			<tr id="page">
+				<td><a href="/">&lt;</a></td>
+				<td><a href="/">&gt;</a></td>
+			</tr>
+		</table> -->
+		<div id="page">
+			<a hidden id="prev" href="javascript:void(0);" onclick="main.prePage();">[이전]</a>
+			<a id="next" href="javascript:void(0);" onclick="main.nextPage();">[다음]</a>
+		</div>
 		<button type="button" id="btnBack">뒤로가기</button>
 		<button type="button" id="btnLogout" hidden>로그아웃</button>
 		<button type="button" id="btnCreate"><a href="/create" style="text-decoration-line: none;">등록</a></button>

@@ -7,7 +7,7 @@ import com.spring.boot.dto.BoardDTO;
 public interface BoardService {
 	
 	public int cnt() throws Exception;
-	public List<BoardDTO> getList() throws Exception;
+	public List<BoardDTO> getList(BoardDTO board) throws Exception;
 	public List<BoardDTO> detail(int id) throws Exception;
 	public boolean save(BoardDTO board) throws Exception;
 	public boolean update(BoardDTO board) throws Exception;

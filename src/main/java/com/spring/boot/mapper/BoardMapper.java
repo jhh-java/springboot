@@ -10,9 +10,9 @@ import com.spring.boot.dto.BoardDTO;
 public interface BoardMapper {
 	
 	public int cnt() throws Exception;
-	public List<BoardDTO> getList() throws Exception;
-	public boolean save(BoardDTO dto) throws Exception;
-	public int update(BoardDTO dto) throws Exception;
+	public List<BoardDTO> getList(BoardDTO board) throws Exception;
+	public boolean save(BoardDTO board) throws Exception;
+	public int update(BoardDTO board) throws Exception;
 	public void delete(int id) throws Exception;
 	public List<BoardDTO> detail(int id);
 	public void updateFile(BoardDTO board) throws Exception;

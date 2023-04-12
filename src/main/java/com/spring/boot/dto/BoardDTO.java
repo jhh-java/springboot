@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BoardDTO {
+	private long rownum;
 	private int id;
 	private String title;
 	private String detail;
@@ -14,7 +15,27 @@ public class BoardDTO {
 	private String filename;
 	private String filepath;
 	private String originFileName;
+	private int pageIdx;
+	private int listLength;
 	
+	public long getRownum() {
+		return rownum;
+	}
+	public void setRownum(long rownum) {
+		this.rownum = rownum;
+	}
+	public int getPageIdx() {
+		return pageIdx;
+	}
+	public void setPageIdx(int pageIdx) {
+		this.pageIdx = pageIdx;
+	}
+	public int getListLength() {
+		return listLength;
+	}
+	public void setListLength(int listLength) {
+		this.listLength = listLength;
+	}
 	public String getOriginFileName() {
 		return originFileName;
 	}

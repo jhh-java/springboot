@@ -10,9 +10,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getList" resultType="com.spring.boot.dto.BoardDTO">
-		SELECT * FROM BOARD
+		<![CDATA[
+		SELECT rownum, id, title, detail, writedate, writername, modifydate, modifyname, filename, filepath, originfilename FROM 
+			(SELECT a.*,ROW_NUMBER() OVER(ORDER BY ID DESC) AS rnum FROM BOARD a) 
 		WHERE 1=1
-		ORDER BY ID DESC
+		AND rnum >= #{pageIdx} 
+		AND rnum <= #{listLength}
+		]]>
 	</select>
 	
 	<select id="detail" resultType="com.spring.boot.dto.BoardDTO" parameterType="int">

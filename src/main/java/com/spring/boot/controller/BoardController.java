@@ -76,8 +76,8 @@ public class BoardController {
 	};
 	
 	@RequestMapping("/getList")
-	public List<BoardDTO> getList() throws Exception {
-		List<BoardDTO> list = boardService.getList();
+	public List<BoardDTO> page(@RequestBody BoardDTO board) throws Exception {
+		List<BoardDTO> list = boardService.getList(board);
 		return list;
 	}
 	
