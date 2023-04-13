@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="container">
-		<h3 id="cnt">게시글 수 : </h3>
+		<h3 id="cnt"></h3>
 		<table id="table" border="1px solid black;">
 		</table>
 		<!-- <table>
@@ -21,8 +21,8 @@
 			</tr>
 		</table> -->
 		<div id="page">
-			<a hidden id="prev" href="javascript:void(0);" onclick="main.prePage();">[이전]</a>
-			<a id="next" href="javascript:void(0);" onclick="main.nextPage();">[다음]</a>
+			<a hidden id="prev" href="javascript:void(0);" onclick="main.prePage(this);">[이전]</a>
+			<a id="next" href="javascript:void(0);" onclick="main.nextPage(this);">[다음]</a>
 		</div>
 		<button type="button" id="btnBack">뒤로가기</button>
 		<button type="button" id="btnLogout" hidden>로그아웃</button>
