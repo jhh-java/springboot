@@ -158,4 +158,10 @@ public class BoardController {
 		File file = new File("C:\\workspace\\SpringBootBoard\\src\\main\\resources\\static\\files\\"+fileName);
 		file.delete();
 	}
+	
+	@RequestMapping("/search")
+	public List<BoardDTO> search(@RequestBody BoardDTO board) throws Exception {
+		List<BoardDTO> list = boardService.search(board);
+		return list;
+	}
 }

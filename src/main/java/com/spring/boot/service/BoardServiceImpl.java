@@ -82,6 +82,9 @@ public class BoardServiceImpl implements BoardService{
 		return boardMapper.detail(id);
 	}
 
-	
+	@Override
+	public List<BoardDTO> search(BoardDTO board) throws Exception {
+		return boardMapper.search(board);
+	}
 	
 }

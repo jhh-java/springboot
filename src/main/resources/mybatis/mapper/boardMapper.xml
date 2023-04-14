@@ -72,6 +72,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		hitCount,created) values (#{num},#{name},#{pwd},#{email},#{subject},
 		#{content},#{ipAddr},0,sysdate)
 	</insert>
+	
+	<select id="search" resultType="com.spring.boot.dto.BoardDTO">
+		SELECT rownum, id, title, detail, writedate, writername, modifydate, modifyname, filename, filepath, originfilename FROM 
+			(SELECT a.*,ROW_NUMBER() OVER(ORDER BY ID DESC) AS rnum FROM BOARD a) 
+		WHERE 1=1
+		AND 
+		<if test = 'searchType.equals("title")'>
+		title = #{searchWord} 
+		</if>
+		<if test = 'searchType.equals("id")'>
+		id = #{searchWord} 
+		</if>
+		<if test = 'searchType.equals("modifyName")'>
+		modifyname = #{searchWord} 
+		</if>
+		<if test = 'searchType.equals("modifyDate")'>
+		<![CDATA[
+		modifydate < TO_DATE(#{searchWord})+1 and modifydate > TO_DATE(#{searchWord})
+		]]> 
+		</if>
+	</select>
 	 
 
 </mapper>

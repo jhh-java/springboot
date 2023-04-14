@@ -59,6 +59,36 @@ var main = {
 				main.callData2(_currentIdx, _listLength);
 			}
 		});
+		
+		$('#searchType').on('change', function(){
+			if($('#searchType').val() == 'modifyDate'){
+				$('#datePicker').prop('hidden', false);
+				$('#searchWord').prop('hidden', true);
+				$('#datePicker').datepicker({
+//					showOn: "both", // 버튼과 텍스트 필드 모두 캘린더를 보여준다.
+//					buttonImage: "/application/db/jquery/images/calendar.gif", // 버튼 이미지
+//					buttonImageOnly: true, // 버튼에 있는 이미지만 표시한다.
+					changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+					changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+					minDate: '-100y', // 현재날짜로부터 100년이전까지 년을 표시한다.
+					nextText: '다음 달', // next 아이콘의 툴팁.
+					prevText: '이전 달', // prev 아이콘의 툴팁.
+					numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+					stepMonths: 3, // next, prev 버튼을 클릭했을때 얼마나 많은 월을 이동하여 표시하는가. 
+					yearRange: 'c-100:c+10', // 년도 선택 셀렉트박스를 현재 년도에서 이전, 이후로 얼마의 범위를 표시할것인가.
+//					showButtonPanel: true, // 캘린더 하단에 버튼 패널을 표시한다. 
+//					currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+//					closeText: '닫기',  // 닫기 버튼 패널
+					dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
+//					showAnim: "slide", //애니메이션을 적용한다.
+					showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
+					dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], // 요일의 한글 형식.
+					monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // 월의 한글 형식.
+					yearRange: "2013:2023" //연도 범위
+				});
+			}
+		});
+		
 	},
 	
 	callData(){
@@ -81,6 +111,8 @@ var main = {
                 if(maxNo > page){
 					maxNo = page;
 					$('#next').prop('hidden', true);
+				}else{
+					$('#next').prop('hidden', false);
 				}
 				if(_pageIdx >10){
 					$('#prev').prop('hidden', false);
@@ -205,23 +237,55 @@ var main = {
 		main.callData();
 	},
 	
-	detail(id){
-//		$.ajax({
-//            url:'/goDetail', //request 보낼 서버의 경로
-//            method:'post', // 메소드(get, post, put 등)
-//            type:'json',
-//            contentType: 'application/json',
-//            data: JSON.stringify({'id': id}), //보낼 데이터
-//            success: function(data) {
-//                //서버로부터 정상적으로 응답이 왔을 때 실행
-//                console.log(data);
-//            },
-//            error: function(err) {
-//                //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
-//                console.log(err);
-//            }
-//        });
-	}
+	search(){
+		_searchType = $('#searchType').val();
+		if(_searchType == ''){
+			alert('검색 유형을 선택하세요.');
+		}else{
+			var _searchWord;
+			if(_searchType == 'modifyDate'){
+				_searchWord = $('#datePicker').val();
+			}else{
+				_searchWord = $('#searchWord').val();
+			}
+			
+			console.log(_searchWord);
+			params = {
+				'searchType'	: _searchType,
+				'searchWord'	: _searchWord,
+				'pageIdx'		: _pageIdx,
+				'listLength'	: _listLength
+			};
+			$.ajax({
+			    url:'/search', //request 보낼 서버의 경로
+			    method:'post', // 메소드(get, post, put 등)
+			    type:'json',
+			    contentType: 'application/json',
+			    data: JSON.stringify(params), //보낼 데이터
+			    success: function(data) {
+			        //서버로부터 정상적으로 응답이 왔을 때 실행
+			        console.log(data);
+			        if(data.length < 1){
+						main.callData2(_currentIdx, _listLength);
+					}else{
+				        main.drawTable(data);
+					}
+			    },
+			    error: function(err) {
+			        //서버로부터 응답이 정상적으로 처리되지 못햇을 때 실행
+			        console.log(err);
+			        alert(err.responseJSON.error);
+			    }
+			});
+		}
+	},
+	
+	enter(){
+		if(window.event.keyCode == 13){
+			main.search();
+		}
+		
+	},
 }
 
 main.init();

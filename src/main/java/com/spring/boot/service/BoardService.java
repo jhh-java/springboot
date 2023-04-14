@@ -14,4 +14,5 @@ public interface BoardService {
 	public void delete(int id) throws Exception;
 	public void updateFile(BoardDTO board) throws Exception;
 	public int currunt() throws Exception;
+	public List<BoardDTO> search(BoardDTO board) throws Exception;
 }
